@@ -4,6 +4,7 @@
 SPI_HandleTypeDef hspi1;
 UART_HandleTypeDef huart1;
 TIM_HandleTypeDef htim1;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 #if defined (__ICCARM__) || defined (__ARMCC_VERSION)
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
@@ -42,6 +43,7 @@ GETCHAR_PROTOTYPE
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_TIM1_Init(void);
@@ -59,6 +61,7 @@ void board_init(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
+    MX_DMA_Init();
     MX_USART1_UART_Init();
     MX_SPI1_Init();
     MX_TIM1_Init();
@@ -252,6 +255,18 @@ static void MX_USART1_UART_Init(void)
     {
         Error_Handler();
     }
+}
+
+static void MX_DMA_Init(void)
+{
+    /* DMA controller clock enable */
+    __HAL_RCC_DMAMUX1_CLK_ENABLE();
+    __HAL_RCC_DMA1_CLK_ENABLE();
+
+    /* DMA interrupt init */
+    /* DMA1_Channel1_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 }
 
 static void MX_GPIO_Init(void)

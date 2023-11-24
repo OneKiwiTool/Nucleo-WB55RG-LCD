@@ -1,18 +1,31 @@
 #include "main.h"
 #include "board.h"
-#include <stdio.h>
+#include "screen.h"
 
-#include "GUI_Paint.h"
-#include "fonts.h"
-#include "image.h"
-#include "LCD_Test.h"
+#include <stdio.h>
 
 int main(void)
 {
     board_init();
     printf("\nStart Program!\n");
 
-    LCD_2in_test();
+    screen_splash();
+    screen_home();
+
+    HAL_Delay(2000);
+    screen_setting();
+
+    HAL_Delay(2000);
+    screen_pair();
+
+    HAL_Delay(2000);
+    screen_info();
+
+    HAL_Delay(2000);
+    screen_pairing();
+
+    screen_paired();
+
     while (1)
     {
     }
