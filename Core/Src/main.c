@@ -12,6 +12,20 @@ int main(void)
     screen_splash();
     screen_home();
 
+    HAL_Delay(2000);
+    screen_setting();
+
+    HAL_Delay(2000);
+    screen_pair();
+
+    HAL_Delay(2000);
+    screen_info();
+
+    HAL_Delay(2000);
+    screen_pairing();
+
+    screen_paired();
+
     while (1)
     {
     }

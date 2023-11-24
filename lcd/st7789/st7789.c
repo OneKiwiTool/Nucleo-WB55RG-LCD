@@ -175,7 +175,7 @@ void ST7789_Init(void)
   	ST7789_WriteCommand (ST7789_DISPON);	//	Main screen turned on	
 
 	HAL_Delay(50);
-	ST7789_Fill_Color(WHITE);				//	Fill with Black.
+	ST7789_Fill_Color(BLACK);				//	Fill with Black.
 }
 
 /**
@@ -419,7 +419,7 @@ void ST7789_InvertColors(uint8_t invert)
 
 /** 
  * @brief Write a char
- * @param  x&y -> cursor of the start point.
+ * @param x&y -> cursor of the start point.
  * @param ch -> char to write
  * @param font -> fontstyle of the string
  * @param color -> color of the char
@@ -593,6 +593,18 @@ void ST7789_DrawFilledRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, 
 		ST7789_DrawLine(x, y + i, x + w, y + i, color);
 	}
 	ST7789_UnSelect();
+}
+
+void ST7789_DrawFilledRectangleCorner(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t r, uint16_t color)
+{	// top left
+	ST7789_DrawFilledCircle(x+r, y+r, r, color);
+	// top right
+	ST7789_DrawFilledCircle(x+w-r, y+r, r, color);
+	// bottom left
+	ST7789_DrawFilledCircle(x+r, y+h-r, r, color);
+	// bottom right
+	ST7789_DrawFilledCircle(x+w-r, y+h-r, r, color);
+	ST7789_DrawFilledRectangle(x+r, y, x+w-2*r, h, color);
 }
 
 /** 
