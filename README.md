@@ -11,5 +11,4 @@ RST PC12
 - https://github.com/ScarsFun/STM32F4_ST7789_LL_DMA
 - https://github.com/zst-embedded/STM32-LCD_Font_Generator
 - https://notisrac.github.io/FileToCArray/
-- https://notisrac.github.io/FileToCArray/
 ![image](image/FileToCArray.png)

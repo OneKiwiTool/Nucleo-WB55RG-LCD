@@ -11,13 +11,15 @@ void screen_splash(void);
 void screen_home(void);
 void screen_home_top(char *title, char *bat, uint8_t blue);
 void screen_home_level(uint8_t level);
+void screen_home_speed(char *speed);
+void screen_home_uint(char *unit);
 void screen_home_deep(char *met, uint16_t color);
 void screen_home_battery(char *bat, uint16_t color);
 
 void screen_setting(void);
 void screen_setting_pair(uint8_t select);
 void screen_setting_unit(uint8_t select, char *unit);
-void screen_setting_bottom(char *text);
+void screen_setting_bottom(uint8_t select);
 void screen_setting_system(uint8_t select);
 
 void screen_pair(void);
